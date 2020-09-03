@@ -18,17 +18,16 @@ public class Main {
         //create an instance of the Expression class
         Expression calculator = new Expression();
 
-        //read all lines in the txt file
+        //read all lines in the txt file. It reads the file while there are lines in it
         while (reader.hasNextLine()){
 
+            //read just a line of the file
             String expression = reader.nextLine();
 
-
-
-            System.out.println(expression);
-
+            //store in a double the evalution that is the result of the math operation
             double value = calculator.evaluate(expression);
 
+            //print to the user the math operation in postfix style and its consequent result
             System.out.println(expression + " =  " + Math.floor(value));
 
         }
