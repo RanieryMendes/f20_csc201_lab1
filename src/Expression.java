@@ -1,7 +1,17 @@
+/*
+Raniery Mendes
+CSC201 Fall 2020
+Programming Assignment 1 - Part 1
+September 15, 2020
+ */
+
 import java.util.Stack;
+
+//Class responsible for performing the evaluation of postfix expressions
 
 public class Expression {
 
+    //create a stack that will store the numbers, and ultimately the results of the postfix expressions
     Stack<Double> stack = new <Double>Stack();
 
     private double total_value = 10;
@@ -11,11 +21,15 @@ public class Expression {
 
 
     public  double evaluate(String sentence){
+
         //int that will return the expression evaluation
         String whole_expression []= sentence.split(" ");
 
+        //variables that will store the numbers that will be used in an operation
         double left_value;
         double right_value;
+
+        //it will iterate through the whole expression to retrieve the numbers and operands to be inserted into the stack
 
         for (int i =0; i< whole_expression.length; i++){
 
@@ -23,6 +37,7 @@ public class Expression {
             if(whole_expression[i].isEmpty()){
                 //do nothing and dismiss value
             }
+
             //store values into the stack
             else{
 
@@ -38,7 +53,7 @@ public class Expression {
                         right_value = stack.pop();
                         left_value = stack.pop();
 
-
+                        //using the values retrieved from the stack, do the addition operation and push the result into the stack
                        stack.push(left_value + right_value);
 
 
@@ -50,6 +65,7 @@ public class Expression {
                         right_value = stack.pop();
                         left_value = stack.pop();
 
+                        //using the values retrieved from the stack, do the subtraction operation and push the result into the stack
                         stack.push(left_value - right_value);
 
 
@@ -61,6 +77,7 @@ public class Expression {
                         right_value = stack.pop();
                         left_value = stack.pop();
 
+                        //using the values retrieved from the stack, do the division operation and push the result into the stack
                         stack.push(left_value / right_value);
 
 
@@ -73,7 +90,7 @@ public class Expression {
                         left_value = stack.pop();
 
 
-                        //using the values retrieved from the stack, do the math operation and push the result into the stack
+                        //using the values retrieved from the stack, do the multiplication operation and push the result into the stack
                         stack.push(left_value * right_value);
 
                     }
